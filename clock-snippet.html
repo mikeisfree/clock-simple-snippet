@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Godzina w Polsce</title>
+    <style>
+      #godzina-container {
+        text-align: center;
+        margin-top: 50px; /* Ustaw margines, aby wyśrodkować div */
+      }
+      #godzina {
+        font-size: 24px;
+      }
+      #miasto {
+        font-size: 18px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="godzina-container">
+      <div id="godzina"></div>
+      <div id="miasto">Warsaw</div>
+    </div>
+
+    <script>
+      function aktualnaGodzina() {
+        var dzisiaj = new Date();
+        var godzina = dzisiaj.getHours();
+        var minuty = dzisiaj.getMinutes();
+        var sekundy = dzisiaj.getSeconds();
+        godzina = dodajZero(godzina);
+        minuty = dodajZero(minuty);
+        sekundy = dodajZero(sekundy);
+        document.getElementById("godzina").innerHTML =
+          godzina + ":" + minuty + ":" + sekundy;
+        setTimeout(aktualnaGodzina, 1000);
+      }
+
+      function dodajZero(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+
+      aktualnaGodzina();
+    </script>
+  </body>
+</html>
